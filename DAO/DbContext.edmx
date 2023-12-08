@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id_admin" />
+          </Key>
+          <Property Name="id_admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="matkhau" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="sodienthoai" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="id_khachhang" />
+          </Key>
+          <Property Name="id_khachhang" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="matkhau" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="sodienthoai" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ngaytao" Type="date" Nullable="false" />
+          <Property Name="ngaycapnhat" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loaisanpham">
+          <Key>
+            <PropertyRef Name="id_loai" />
+          </Key>
+          <Property Name="id_loai" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="id_nhom" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="tenloai" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="ngaytao" Type="date" Nullable="false" />
+          <Property Name="ngaycapnhat" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nhomsanpham">
+          <Key>
+            <PropertyRef Name="id_nhom" />
+          </Key>
+          <Property Name="id_nhom" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="tennhom" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="ngaytao" Type="date" Nullable="false" />
+          <Property Name="ngaycapnhat" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="phieugiaohang">
+          <Key>
+            <PropertyRef Name="id_pgh" />
+          </Key>
+          <Property Name="id_pgh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngaygiaohang" Type="date" Nullable="false" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+          <Property Name="tenkhachhang" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="sodienthoai" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="maphieuxuat" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ghichu" Type="nvarchar" MaxLength="158" />
+          <Property Name="phigiaohang" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="tongtienpx" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="tongtienthanhtoan" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="phuongthucthanhtoanId" Type="int" />
+        </EntityType>
+        <EntityType Name="phieunhap">
+          <Key>
+            <PropertyRef Name="id_phieunhap" />
+          </Key>
+          <Property Name="id_phieunhap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sanpham" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="soluongsp" Type="int" Nullable="false" />
+          <Property Name="gianhap" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ngaynhap" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="phuongthucthanhtoan">
+          <Key>
+            <PropertyRef Name="id_thanhtoan" />
+          </Key>
+          <Property Name="id_thanhtoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tenthanhtoan" Type="nvarchar" MaxLength="48" />
+        </EntityType>
+        <EntityType Name="sanpham">
+          <Key>
+            <PropertyRef Name="id_sanpham" />
+          </Key>
+          <Property Name="id_sanpham" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="tensanpham" Type="nvarchar" MaxLength="52" Nullable="false" />
+          <Property Name="id_loai" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="gia" Type="decimal" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="id_thuonghieu" Type="int" Nullable="false" />
+          <Property Name="baohanh" Type="int" Nullable="false" />
+          <Property Name="khuyenmai" Type="int" Nullable="false" />
+          <Property Name="hinh" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="soluong" Type="int" Nullable="false" />
+          <Property Name="mota" Type="text" />
+          <Property Name="ngaytao" Type="date" Nullable="false" />
+          <Property Name="ngaycapnhat" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="thuonghieu">
+          <Key>
+            <PropertyRef Name="id_thuonghieu" />
+          </Key>
+          <Property Name="id_thuonghieu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nhom" Type="char" MaxLength="5" />
+          <Property Name="tenthuonghieu" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="ngaytao" Type="date" Nullable="false" />
+          <Property Name="ngaycapnhat" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xuatkho">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="maphieuxuat" Type="nvarchar" MaxLength="500" />
+          <Property Name="id_sanpham" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="soluong" Type="int" Nullable="false" />
+          <Property Name="ngayxuat" Type="date" />
+          <Property Name="sotien" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Function Name="Sp_ReportSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DbContextModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khachhang" EntityType="Self.khachhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaisanpham" EntityType="Self.loaisanpham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nhomsanpham" EntityType="Self.nhomsanpham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="phieugiaohang" EntityType="Self.phieugiaohang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="phieunhap" EntityType="Self.phieunhap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="phuongthucthanhtoan" EntityType="Self.phuongthucthanhtoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="thuonghieu" EntityType="Self.thuonghieu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xuatkho" EntityType="Self.xuatkho" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id_admin" />
+          </Key>
+          <Property Name="id_admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matkhau" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sodienthoai" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="id_khachhang" />
+          </Key>
+          <Property Name="id_khachhang" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matkhau" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sodienthoai" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="diachi" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ngaycapnhat" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="loaisanpham">
+          <Key>
+            <PropertyRef Name="id_loai" />
+          </Key>
+          <Property Name="id_loai" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="id_nhom" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tenloai" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ngaycapnhat" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="nhomsanpham">
+          <Key>
+            <PropertyRef Name="id_nhom" />
+          </Key>
+          <Property Name="id_nhom" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tennhom" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ngaycapnhat" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="phieugiaohang">
+          <Key>
+            <PropertyRef Name="id_pgh" />
+          </Key>
+          <Property Name="id_pgh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaygiaohang" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tenkhachhang" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sodienthoai" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="maphieuxuat" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ghichu" Type="String" MaxLength="158" FixedLength="false" Unicode="true" />
+          <Property Name="phigiaohang" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="tongtienpx" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="tongtienthanhtoan" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="phuongthucthanhtoanId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="phieunhap">
+          <Key>
+            <PropertyRef Name="id_phieunhap" />
+          </Key>
+          <Property Name="id_phieunhap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sanpham" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="soluongsp" Type="Int32" Nullable="false" />
+          <Property Name="gianhap" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ngaynhap" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="phuongthucthanhtoan">
+          <Key>
+            <PropertyRef Name="id_thanhtoan" />
+          </Key>
+          <Property Name="id_thanhtoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tenthanhtoan" Type="String" MaxLength="48" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sanpham">
+          <Key>
+            <PropertyRef Name="id_sanpham" />
+          </Key>
+          <Property Name="id_sanpham" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tensanpham" Type="String" MaxLength="52" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_loai" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="gia" Type="Decimal" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="id_thuonghieu" Type="Int32" Nullable="false" />
+          <Property Name="baohanh" Type="Int32" Nullable="false" />
+          <Property Name="khuyenmai" Type="Int32" Nullable="false" />
+          <Property Name="hinh" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soluong" Type="Int32" Nullable="false" />
+          <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ngaycapnhat" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="thuonghieu">
+          <Key>
+            <PropertyRef Name="id_thuonghieu" />
+          </Key>
+          <Property Name="id_thuonghieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nhom" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="tenthuonghieu" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ngaycapnhat" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="xuatkho">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="maphieuxuat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="id_sanpham" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="soluong" Type="Int32" Nullable="false" />
+          <Property Name="ngayxuat" Type="DateTime" Precision="0" />
+          <Property Name="sotien" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityContainer Name="DbContextsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
+          <EntitySet Name="loaisanphams" EntityType="Self.loaisanpham" />
+          <EntitySet Name="nhomsanphams" EntityType="Self.nhomsanpham" />
+          <EntitySet Name="phieugiaohangs" EntityType="Self.phieugiaohang" />
+          <EntitySet Name="phieunhaps" EntityType="Self.phieunhap" />
+          <EntitySet Name="phuongthucthanhtoans" EntityType="Self.phuongthucthanhtoan" />
+          <EntitySet Name="sanphams" EntityType="Self.sanpham" />
+          <EntitySet Name="thuonghieux" EntityType="Self.thuonghieu" />
+          <EntitySet Name="xuatkhoes" EntityType="Self.xuatkho" />
+          <FunctionImport Name="Sp_ReportSanPham" ReturnType="Collection(DbContextModel.Sp_ReportSanPham_Result)" />
+        </EntityContainer>
+        <ComplexType Name="Sp_ReportSanPham_Result">
+          <Property Type="String" Name="id_sanpham" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="52" />
+          <Property Type="Int32" Name="TongSoLuongNhap" Nullable="true" />
+          <Property Type="Int32" Name="TongSoLuongXuat" Nullable="true" />
+          <Property Type="Decimal" Name="TongTienNhap" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TongTienXuat" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbContextModelStoreContainer" CdmEntityContainer="DbContextsEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="DbContextModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="id_admin" ColumnName="id_admin" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khachhangs">
+            <EntityTypeMapping TypeName="DbContextModel.khachhang">
+              <MappingFragment StoreEntitySet="khachhang">
+                <ScalarProperty Name="id_khachhang" ColumnName="id_khachhang" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaisanphams">
+            <EntityTypeMapping TypeName="DbContextModel.loaisanpham">
+              <MappingFragment StoreEntitySet="loaisanpham">
+                <ScalarProperty Name="id_loai" ColumnName="id_loai" />
+                <ScalarProperty Name="id_nhom" ColumnName="id_nhom" />
+                <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nhomsanphams">
+            <EntityTypeMapping TypeName="DbContextModel.nhomsanpham">
+              <MappingFragment StoreEntitySet="nhomsanpham">
+                <ScalarProperty Name="id_nhom" ColumnName="id_nhom" />
+                <ScalarProperty Name="tennhom" ColumnName="tennhom" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="phieugiaohangs">
+            <EntityTypeMapping TypeName="DbContextModel.phieugiaohang">
+              <MappingFragment StoreEntitySet="phieugiaohang">
+                <ScalarProperty Name="id_pgh" ColumnName="id_pgh" />
+                <ScalarProperty Name="ngaygiaohang" ColumnName="ngaygiaohang" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="tenkhachhang" ColumnName="tenkhachhang" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+                <ScalarProperty Name="maphieuxuat" ColumnName="maphieuxuat" />
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="phigiaohang" ColumnName="phigiaohang" />
+                <ScalarProperty Name="tongtienpx" ColumnName="tongtienpx" />
+                <ScalarProperty Name="tongtienthanhtoan" ColumnName="tongtienthanhtoan" />
+                <ScalarProperty Name="phuongthucthanhtoanId" ColumnName="phuongthucthanhtoanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="phieunhaps">
+            <EntityTypeMapping TypeName="DbContextModel.phieunhap">
+              <MappingFragment StoreEntitySet="phieunhap">
+                <ScalarProperty Name="id_phieunhap" ColumnName="id_phieunhap" />
+                <ScalarProperty Name="id_sanpham" ColumnName="id_sanpham" />
+                <ScalarProperty Name="soluongsp" ColumnName="soluongsp" />
+                <ScalarProperty Name="gianhap" ColumnName="gianhap" />
+                <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="phuongthucthanhtoans">
+            <EntityTypeMapping TypeName="DbContextModel.phuongthucthanhtoan">
+              <MappingFragment StoreEntitySet="phuongthucthanhtoan">
+                <ScalarProperty Name="id_thanhtoan" ColumnName="id_thanhtoan" />
+                <ScalarProperty Name="tenthanhtoan" ColumnName="tenthanhtoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sanphams">
+            <EntityTypeMapping TypeName="DbContextModel.sanpham">
+              <MappingFragment StoreEntitySet="sanpham">
+                <ScalarProperty Name="id_sanpham" ColumnName="id_sanpham" />
+                <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
+                <ScalarProperty Name="id_loai" ColumnName="id_loai" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="id_thuonghieu" ColumnName="id_thuonghieu" />
+                <ScalarProperty Name="baohanh" ColumnName="baohanh" />
+                <ScalarProperty Name="khuyenmai" ColumnName="khuyenmai" />
+                <ScalarProperty Name="hinh" ColumnName="hinh" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="thuonghieux">
+            <EntityTypeMapping TypeName="DbContextModel.thuonghieu">
+              <MappingFragment StoreEntitySet="thuonghieu">
+                <ScalarProperty Name="id_thuonghieu" ColumnName="id_thuonghieu" />
+                <ScalarProperty Name="id_nhom" ColumnName="id_nhom" />
+                <ScalarProperty Name="tenthuonghieu" ColumnName="tenthuonghieu" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="ngaycapnhat" ColumnName="ngaycapnhat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xuatkhoes">
+            <EntityTypeMapping TypeName="DbContextModel.xuatkho">
+              <MappingFragment StoreEntitySet="xuatkho">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="maphieuxuat" ColumnName="maphieuxuat" />
+                <ScalarProperty Name="id_sanpham" ColumnName="id_sanpham" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+                <ScalarProperty Name="ngayxuat" ColumnName="ngayxuat" />
+                <ScalarProperty Name="sotien" ColumnName="sotien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_ReportSanPham" FunctionName="DbContextModel.Store.Sp_ReportSanPham">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DbContextModel.Sp_ReportSanPham_Result">
+                <ScalarProperty Name="id_sanpham" ColumnName="id_sanpham" />
+                <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
+                <ScalarProperty Name="TongSoLuongNhap" ColumnName="TongSoLuongNhap" />
+                <ScalarProperty Name="TongSoLuongXuat" ColumnName="TongSoLuongXuat" />
+                <ScalarProperty Name="TongTienNhap" ColumnName="TongTienNhap" />
+                <ScalarProperty Name="TongTienXuat" ColumnName="TongTienXuat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
